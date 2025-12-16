@@ -1,0 +1,12 @@
+[Info] tests/suspicious/CVE-2023-38831-1.rar check result:
+--- Trailing Whitespace    : True
+--- Abnormal Executable    : True
+--- File Dir Collision     : True
+--- Deep Nested Executable : False
+
+[Info] tests/suspicious/CVE-2023-38831-2.rar check result:
+--- Trailing Whitespace    : True
+--- Abnormal Executable    : True
+--- File Dir Collision     : True
+--- Deep Nested Executable : True
+

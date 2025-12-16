@@ -21,7 +21,7 @@ class Zip_Rules:
                     print(f'[Warn] "{zinfo.filename}" has trailing whitespace')
         return check
 
-    def abnormal_executable(self, file:zipfile.ZipFile, threshold:int=0.2):
+    def file_exe_collision(self, file:zipfile.ZipFile):
         _record = {}
         check = False
         for zinfo in file.infolist():
@@ -32,7 +32,7 @@ class Zip_Rules:
                 _name = zinfo.filename.split('/')[-1]
                 _idx = _name.rfind('.')
                 _prev, _ext = _name[:_idx], _name[_idx+1:]
-                # w1: executable
+                # w1: check executable
                 if _ext not in ['bat', 'cmd', 'exe']:
                     _record[_name] = True
                     _record[_prev] = True
@@ -41,12 +41,7 @@ class Zip_Rules:
                     if _prev in _record.keys():
                         check = True
                         if self.show_details:
-                            print(f'[Warn] "{zinfo.filename}" has abnormal name - type 1')
-        
-                    if utils.calcu_entropy(_prev, 3)-utils.calcu_entropy(_prev, 1) >= threshold:
-                        check = True
-                        if self.show_details:
-                            print(f'[Warn] "{zinfo.filename}" has abnormal name - type 2')
+                            print(f'[Warn] "{zinfo.filename}" collide with file')
         return check
 
     def file_dir_collision(self, file:zipfile.ZipFile):
