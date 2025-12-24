@@ -1,12 +1,46 @@
-[Info] tests/suspicious/CVE-2023-38831-1.rar check result:
+[Info] tests/generate/output_0.rar check result:
 --- Trailing Whitespace    : True
---- Abnormal Executable    : True
+--- Dir Exe Collision      : False ( Prev: Abnormal Executable )
 --- File Dir Collision     : True
---- Deep Nested Executable : False
+[Info] tests/generate/output_1.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : False ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_2.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : False ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_3.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : True ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_4.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : False ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_5.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : True ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_6.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : False ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_7.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : False ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_8.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : False ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
+[Info] tests/generate/output_9.rar check result:
+--- Trailing Whitespace    : True
+--- Dir Exe Collision      : True ( Prev: Abnormal Executable )
+--- File Dir Collision     : True
 
-[Info] tests/suspicious/CVE-2023-38831-2.rar check result:
---- Trailing Whitespace    : True
---- Abnormal Executable    : True
---- File Dir Collision     : True
---- Deep Nested Executable : True
+
+
+
+
 

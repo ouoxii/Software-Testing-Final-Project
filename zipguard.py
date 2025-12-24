@@ -26,7 +26,7 @@ def verify(args):
         file = zipfile.ZipFile(name, 'r')
 
         flag_1 = tester.trailing_whitespace(file)
-        flag_2 = tester.file_exe_collision(file)
+        flag_2 = tester.dir_exe_collision(file)
         flag_3 = tester.file_dir_collision(file)
         flag_4 = tester.deep_nested_executable(file, 3)
 
@@ -35,9 +35,9 @@ def verify(args):
         infos = [
             f'[Info] {name} check result:',
             f'--- Trailing Whitespace    : {flag_1}',
-            f'--- Abnormal Executable    : {flag_2}',
+            f'--- Dir Exe Collision      : {flag_2} ( Prev: Abnormal Executable )',
             f'--- File Dir Collision     : {flag_3}',
-            f'--- Deep Nested Executable : {flag_4}\n'
+            f'--- Deep Nested Executable : {flag_4}'
         ]
         with open(args.v_output, 'a') as f:
             np.savetxt(f, infos, fmt='%s')

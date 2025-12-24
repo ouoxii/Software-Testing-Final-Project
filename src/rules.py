@@ -21,27 +21,45 @@ class Zip_Rules:
                     print(f'[Warn] "{zinfo.filename}" has trailing whitespace')
         return check
 
-    def file_exe_collision(self, file:zipfile.ZipFile):
+    # def file_exe_collision(self, file:zipfile.ZipFile):
+    #     _record = {}
+    #     check = False
+    #     for zinfo in file.infolist():
+    #         if zinfo.is_dir():
+    #             _name = zinfo.filename[:-1].split('/')[-1]
+    #             _record[_name] = True
+    #         else:
+    #             _name = zinfo.filename.split('/')[-1]
+    #             _idx = _name.rfind('.')
+    #             _prev, _ext = _name[:_idx], _name[_idx+1:]
+    #             # w1: check executable
+    #             if _ext not in ['bat', 'cmd', 'exe']:
+    #                 _record[_name] = True
+    #                 _record[_prev] = True
+    #             # w2: abnormal check
+    #             else:
+    #                 if _prev in _record.keys():
+    #                     check = True
+    #                     if self.show_details:
+    #                         print(f'[Warn] "{zinfo.filename}" collide with file')
+    #     return check
+
+    def dir_exe_collision(self, file:zipfile.ZipFile):
         _record = {}
         check = False
         for zinfo in file.infolist():
-            if zinfo.is_dir():
-                _name = zinfo.filename[:-1].split('/')[-1]
-                _record[_name] = True
-            else:
-                _name = zinfo.filename.split('/')[-1]
-                _idx = _name.rfind('.')
-                _prev, _ext = _name[:_idx], _name[_idx+1:]
+            if not zinfo.is_dir():
+                _names = zinfo.filename.split('/')
+                _d_names, _f_name = _names[:-1], _names[-1]
+                _idx = _f_name.rfind('.')
+                _prev, _ext = _f_name[:_idx], _f_name[_idx+1:]
                 # w1: check executable
-                if _ext not in ['bat', 'cmd', 'exe']:
-                    _record[_name] = True
-                    _record[_prev] = True
-                # w2: abnormal check
-                else:
-                    if _prev in _record.keys():
+                if _ext in ['bat', 'cmd', 'exe']:
+                    # w1-2: abnormal check
+                    if _prev in _d_names:
                         check = True
                         if self.show_details:
-                            print(f'[Warn] "{zinfo.filename}" collide with file')
+                            print(f'[Warn] "{zinfo.filename}" collide with directory')
         return check
 
     def file_dir_collision(self, file:zipfile.ZipFile):
